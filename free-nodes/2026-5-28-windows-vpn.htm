@@ -352,19 +352,9 @@ sudo netfilter-persistent save
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>VLESS + Reality 模式如何隐藏流量特征？</h5></div>
+    <div class="panel-heading"><h5>Shadowrocket 如何处理域名直连与代理的冲突？</h5></div>
     <div class="panel-body">
-        Reality 模式通过伪装握手和真实网站特征，使流量难以被 DPI 检测。结合策略组使用，可有效隐藏节点通信特征，同时保持安全和高速传输，适合高封锁环境。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Clash 订阅被墙或无法下载如何绕过？</h5></div>
-    <div class="panel-body">
-        若订阅源被直接屏蔽，可尝试先在境外服务器上用代理代理获取订阅并通过中转服务器公开一个新的链接；或者使用 HTTPS 与 CDN 中转、或将订阅以文件形式托管在不易被封的云存储上。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>QuantumultX 支持按端口和协议分流吗？</h5></div>
-    <div class="panel-body">
-        支持。QuantumultX 可以按 TCP、UDP、端口和应用协议分流流量，结合策略组使用，确保游戏、视频和广告屏蔽走最优节点，提高访问速度和网络稳定性。<hr />    </div>
+        在 Shadowrocket 的规则管理中优先设置具体规则（如 DOMAIN-KEYWORD 或 DOMAIN-SUFFIX），将直连规则放在规则列表靠前位置，避免被泛用的代理规则覆盖，从而确保特定域名走直连。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>PassWall2 的分组策略可以自动切换节点吗？</h5></div>
@@ -372,24 +362,9 @@ sudo netfilter-persistent save
         可以。用户可以设置策略组，PassWall2 会定期测速并根据延迟或成功率自动选择最优节点，实现智能节点切换，保证网络稳定性。<hr />    </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>PassWall2 在路由器上使用 TUN 模式会有什么影响？</h5></div>
-    <div class="panel-body">
-        启用 TUN 模式会拦截并转发路由器上全部或选定流量，这会增加路由器 CPU 与内存负担，可能影响路由器其他服务表现。建议在性能足够的设备上启用，或仅对特定设备/端口进行分流。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>如何导入 Clash 订阅链接？</h5></div>
     <div class="panel-body">
         打开 Clash 客户端，进入 Profiles（配置文件）页面，粘贴提供的订阅链接并点击下载。Clash 会自动更新节点列表，用户可在 Profiles 中选择对应配置启用，从而快速切换不同代理线路。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Shadowrocket 如何处理域名直连与代理的冲突？</h5></div>
-    <div class="panel-body">
-        在 Shadowrocket 的规则管理中优先设置具体规则（如 DOMAIN-KEYWORD 或 DOMAIN-SUFFIX），将直连规则放在规则列表靠前位置，避免被泛用的代理规则覆盖，从而确保特定域名走直连。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray QUIC 模式适合高丢包网络吗？</h5></div>
-    <div class="panel-body">
-        QUIC 基于 UDP 协议，支持多路复用和零握手，能在高丢包和不稳定网络中减少延迟和丢包。适合视频、游戏和即时通讯等高频应用场景，提高稳定性和速度。<hr />    </div>
 </div>
 <div class="panel panel-default">
     <div class="panel-heading"><h5>Mellow 与 Clash 的核心区别是什么？</h5></div>
@@ -399,7 +374,32 @@ sudo netfilter-persistent save
 <div class="panel panel-default">
     <div class="panel-heading"><h5>V2Ray 如何使用 WebSocket 传输？</h5></div>
     <div class="panel-body">
-        在 V2Ray 配置文件中将传输方式设置为 ws，即启用 WebSocket 模式。结合 CDN 和 TLS，可实现安全高速的代理链路。WebSocket 常用于伪装成 HTTPS 流量，从而降低被识别风险。    </div>
+        在 V2Ray 配置文件中将传输方式设置为 ws，即启用 WebSocket 模式。结合 CDN 和 TLS，可实现安全高速的代理链路。WebSocket 常用于伪装成 HTTPS 流量，从而降低被识别风险。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VLESS + Reality 模式如何隐藏流量特征？</h5></div>
+    <div class="panel-body">
+        Reality 模式通过伪装握手和真实网站特征，使流量难以被 DPI 检测。结合策略组使用，可有效隐藏节点通信特征，同时保持安全和高速传输，适合高封锁环境。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>QuantumultX 支持按端口和协议分流吗？</h5></div>
+    <div class="panel-body">
+        支持。QuantumultX 可以按 TCP、UDP、端口和应用协议分流流量，结合策略组使用，确保游戏、视频和广告屏蔽走最优节点，提高访问速度和网络稳定性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Clash 订阅被墙或无法下载如何绕过？</h5></div>
+    <div class="panel-body">
+        若订阅源被直接屏蔽，可尝试先在境外服务器上用代理代理获取订阅并通过中转服务器公开一个新的链接；或者使用 HTTPS 与 CDN 中转、或将订阅以文件形式托管在不易被封的云存储上。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>PassWall2 在路由器上使用 TUN 模式会有什么影响？</h5></div>
+    <div class="panel-body">
+        启用 TUN 模式会拦截并转发路由器上全部或选定流量，这会增加路由器 CPU 与内存负担，可能影响路由器其他服务表现。建议在性能足够的设备上启用，或仅对特定设备/端口进行分流。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray QUIC 模式适合高丢包网络吗？</h5></div>
+    <div class="panel-body">
+        QUIC 基于 UDP 协议，支持多路复用和零握手，能在高丢包和不稳定网络中减少延迟和丢包。适合视频、游戏和即时通讯等高频应用场景，提高稳定性和速度。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -449,16 +449,16 @@ sudo netfilter-persistent save
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2026-5-2-windows-vpn.htm" title="App Clash - 5月2日21.3M/S|免费SSR节点/Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/Singbox节点节点推荐，VPN节点购买推荐">App Clash - 5月2日21.3M/S|免费SSR节点/Trojan节点/V2ray节点/Shadowrocket节点/Clash节点/Singbox节点节点推荐，VPN节点购买推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-9-free-node-subscribe.htm" title="App Clash - 5月9日18.3M/S|免费V2ray节点/Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点节点推荐，VPN节点购买推荐">App Clash - 5月9日18.3M/S|免费V2ray节点/Clash节点/Trojan节点/Singbox节点/Shadowrocket节点/SSR节点节点推荐，VPN节点购买推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-15-mianfei-vpn.htm" title="App Clash - 5月15日18.3M/S|免费V2ray节点/Clash节点/Shadowrocket节点/Singbox节点/Trojan节点/SSR节点节点推荐，VPN节点购买推荐">App Clash - 5月15日18.3M/S|免费V2ray节点/Clash节点/Shadowrocket节点/Singbox节点/Trojan节点/SSR节点节点推荐，VPN节点购买推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-16-mianfei-vpn.htm" title="App Clash - 5月16日22.2M/S|免费SSR节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点节点推荐，VPN节点购买推荐">App Clash - 5月16日22.2M/S|免费SSR节点/Singbox节点/Trojan节点/Clash节点/Shadowrocket节点/V2ray节点节点推荐，VPN节点购买推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-13-free-vpn-node.htm" title="App Clash - 4月13日20.1M/S|免费Shadowrocket节点/SSR节点/V2ray节点/Trojan节点/Clash节点/Singbox节点节点推荐，VPN节点购买推荐">App Clash - 4月13日20.1M/S|免费Shadowrocket节点/SSR节点/V2ray节点/Trojan节点/Clash节点/Singbox节点节点推荐，VPN节点购买推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-11-mianfei-vpn.htm" title="App Clash - 5月11日22.9M/S|免费Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点节点推荐，VPN节点购买推荐">App Clash - 5月11日22.9M/S|免费Singbox节点/V2ray节点/Trojan节点/Clash节点/Shadowrocket节点/SSR节点节点推荐，VPN节点购买推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-17-vpn-github.htm" title="App Clash - 5月17日18.7M/S|免费Clash节点/SSR节点/Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点节点推荐，VPN节点购买推荐">App Clash - 5月17日18.7M/S|免费Clash节点/SSR节点/Trojan节点/Singbox节点/V2ray节点/Shadowrocket节点节点推荐，VPN节点购买推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-4-22-vpn-free.htm" title="App Clash - 4月22日21.7M/S|免费V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/SSR节点/Singbox节点节点推荐，VPN节点购买推荐">App Clash - 4月22日21.7M/S|免费V2ray节点/Shadowrocket节点/Clash节点/Trojan节点/SSR节点/Singbox节点节点推荐，VPN节点购买推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-20-free-vpn.htm" title="App Clash - 5月20日22.4M/S|免费Singbox节点/Clash节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点节点推荐，VPN节点购买推荐">App Clash - 5月20日22.4M/S|免费Singbox节点/Clash节点/SSR节点/Trojan节点/Shadowrocket节点/V2ray节点节点推荐，VPN节点购买推荐</a><hr /></li>
                         <li class="py-2"><a href="/free-nodes/2026-5-29-vpn-github.htm" title="App Clash - 5月29日18.5M/S|免费V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点节点推荐，VPN节点购买推荐">App Clash - 5月29日18.5M/S|免费V2ray节点/SSR节点/Trojan节点/Shadowrocket节点/Clash节点/Singbox节点节点推荐，VPN节点购买推荐</a><hr /></li>
-                        <li class="py-2"><a href="/free-nodes/2026-5-4-mianfei-vpn.htm" title="App Clash - 5月4日18.8M/S|免费Shadowrocket节点/SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点节点推荐，VPN节点购买推荐">App Clash - 5月4日18.8M/S|免费Shadowrocket节点/SSR节点/Clash节点/Trojan节点/V2ray节点/Singbox节点节点推荐，VPN节点购买推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-18-vpn-proxy.htm" title="App Clash - 5月18日18.6M/S|免费V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/Clash节点节点推荐，VPN节点购买推荐">App Clash - 5月18日18.6M/S|免费V2ray节点/Singbox节点/Trojan节点/Shadowrocket节点/SSR节点/Clash节点节点推荐，VPN节点购买推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-25-vpn-github.htm" title="App Clash - 5月25日21.9M/S|免费Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点/SSR节点节点推荐，VPN节点购买推荐">App Clash - 5月25日21.9M/S|免费Trojan节点/Singbox节点/Clash节点/Shadowrocket节点/V2ray节点/SSR节点节点推荐，VPN节点购买推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-6-2-free-vpn-node.htm" title="App Clash - 6月2日22.9M/S|免费Trojan节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点节点推荐，VPN节点购买推荐">App Clash - 6月2日22.9M/S|免费Trojan节点/V2ray节点/SSR节点/Singbox节点/Shadowrocket节点/Clash节点节点推荐，VPN节点购买推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-14-free-node-subscribe.htm" title="App Clash - 5月14日18.5M/S|免费Trojan节点/Singbox节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点节点推荐，VPN节点购买推荐">App Clash - 5月14日18.5M/S|免费Trojan节点/Singbox节点/V2ray节点/Clash节点/SSR节点/Shadowrocket节点节点推荐，VPN节点购买推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-10-mianfei-vpn.htm" title="App Clash - 5月10日19.7M/S|免费Shadowrocket节点/Singbox节点/Clash节点/SSR节点/Trojan节点/V2ray节点节点推荐，VPN节点购买推荐">App Clash - 5月10日19.7M/S|免费Shadowrocket节点/Singbox节点/Clash节点/SSR节点/Trojan节点/V2ray节点节点推荐，VPN节点购买推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-31-vpn-github.htm" title="App Clash - 5月31日21.8M/S|免费Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点节点推荐，VPN节点购买推荐">App Clash - 5月31日21.8M/S|免费Trojan节点/Singbox节点/SSR节点/Shadowrocket节点/V2ray节点/Clash节点节点推荐，VPN节点购买推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-3-top-vpn-node.htm" title="App Clash - 5月3日18.7M/S|免费SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Trojan节点/Singbox节点节点推荐，VPN节点购买推荐">App Clash - 5月3日18.7M/S|免费SSR节点/V2ray节点/Clash节点/Shadowrocket节点/Trojan节点/Singbox节点节点推荐，VPN节点购买推荐</a><hr /></li>
+                        <li class="py-2"><a href="/free-nodes/2026-5-12-node-share.htm" title="App Clash - 5月12日19.1M/S|免费Shadowrocket节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Trojan节点节点推荐，VPN节点购买推荐">App Clash - 5月12日19.1M/S|免费Shadowrocket节点/Singbox节点/SSR节点/Clash节点/V2ray节点/Trojan节点节点推荐，VPN节点购买推荐</a><hr /></li>
                     </ul>
     </div>
 </div>
@@ -470,10 +470,10 @@ sudo netfilter-persistent save
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2026-06/" title="2026-06 归档">2026-06</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">19</span> <a href="/date/2026-04/" title="2026-04 归档">2026-04</a></h4>
+                <h4><span class="badge" style="float: right;">29</span> <a href="/date/2026-05/" title="2026-05 归档">2026-05</a></h4>
             </li>
                     </ul>
     </div>
